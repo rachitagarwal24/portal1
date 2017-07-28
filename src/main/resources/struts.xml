@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+ <constant name="struts.devMode" value="true" />
+ <!-- <package name="user" namespace="/" extends="struts-default">
+  <action name="register" class="com.portal.HomeAction" method="getDetail">
+   <result name="success">WEB-INF/index.jsp</result>
+  </action>
+ </package>
+-->
+<package name="myhibernate" extends="struts-default">
+      
+      <action name="login">  
+		<result>login.jsp</result>  
+	  </action>
+	  
+	  <action name="register1">  
+		<result>Pregister.jsp</result>  
+	  </action>  
+       <action name="registermany" class="com.portal.AddActionRegister" method="execute">
+     	<result name="success" type="redirect">Pregister.jsp</result>
+     </action> 
+     <action name="logoutPlayer" class="com.portal.LoginAction" method="logout">  
+		<result name="success" type="redirect">Pregister.jsp</result>  
+	 </action>  
+     
+   
+      
+      <action name="loginprocess" method="execute" class="com.portal.LoginAction">
+      	 <result name="success" type="redirect">particularPlayer</result>
+         <result name="input" type="redirect">Pregister-error.jsp</result>
+      </action>
+      
+      <action name="particularPlayer" method="particularPlayerInfo" class="com.portal.AddActionRegister">
+         <result name="success" >/player.jsp</result>
+         <result name="loginpage" >Pregister.jsp</result>
+      </action>
+      
+      
+    <action name="officerlogin" method="officerLogin" class="com.portal.AddActionOfficer">
+      	<result name="success" type="redirect">listPlayer</result>
+      	 <result name="input" type="redirect">register-error.jsp</result>
+      </action>
+       <action name="officerlogout" class="com.portal.AddActionOfficer" method="logout">  
+		<result name="success" type="redirect">Oregister.jsp</result>  
+	 </action>  
+    
+      <action name="updateInfo">
+         <result >updatePlayerInfo.jsp</result>
+       </action>
+        <action name="updateInfopart">
+         <result >updateOwnInfo.jsp</result>
+       </action>
+      <action name="update" method="execute" class="com.portal.ActionUpdate">
+      	 <result name="success" type="redirect">listPlayer</result>
+      </action>
+       <action name="updateParti" method="execute" class="com.portal.ActionUpdate">
+      	 <result name="success" type="redirect">particularPlayer</result>
+      </action>
+      
+      <action name="addOfficer" method="execute" class="com.portal.AddActionOfficer">
+         <result name="success" type="redirect">Oregister.jsp</result>
+       
+      </action>
+      
+      <action name="listPlayer" method="listPlayerInfo"
+         class="com.portal.AddActionRegister">
+         <result name="success" >/welcome1.jsp</result>
+         
+      </action>
+      
+	</package>
+</struts>
+

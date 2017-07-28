@@ -1,0 +1,118 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.stpl</groupId>
+  <artifactId>portal</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+ 
+   <name>StrutsMavenProject</name>
+  <url>http://maven.apache.org</url>
+ <properties>
+  <struts.version>2.3.16.3</struts.version>
+  <jdk.version>1.8</jdk.version>
+  <context.path>StrutsMavenProject</context.path>
+ </properties>
+ <developers>
+ <developer>
+   <id>Rachit</id>
+   <email></email>
+   <roles>
+    <role>Java Developer</role>
+   </roles>
+   <timezone>+5:30</timezone>
+  </developer>
+ </developers>
+ 
+  <build>
+  <finalName>${pom.artifactId}</finalName>
+  <plugins>
+   <plugin>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+     <source>${jdk.version}</source>
+     <target>${jdk.version}</target>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+ <dependencies>
+  <dependency>
+    <groupId>org.apache.struts</groupId>
+    <artifactId>struts2-core</artifactId>
+    <version>2.3.28</version>
+</dependency>
+<!-- MySQL database driver -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.9</version>
+	</dependency>
+
+
+
+
+	<!-- Hibernate validator (Struts 2 Hibernate Plugins dependency) -->
+	<dependency>
+               <groupId>org.hibernate</groupId>
+	       <artifactId>hibernate-validator</artifactId>
+	       <version>3.1.0.GA</version>
+        </dependency>
+
+	<!-- slf4j logging (Struts 2 Hibernate Plugins dependency) -->
+	<dependency>
+               <groupId>org.slf4j</groupId>
+	       <artifactId>slf4j-api</artifactId>
+	       <version>1.6.1</version>
+        </dependency>
+
+	<!-- Hibernate core -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>3.3.2.GA</version>
+	</dependency>
+
+	<!-- Hibernate core library dependency start -->
+	<dependency>
+		<groupId>dom4j</groupId>
+		<artifactId>dom4j</artifactId>
+		<version>1.6.1</version>
+	</dependency>
+
+	<dependency>
+		<groupId>commons-logging</groupId>
+		<artifactId>commons-logging</artifactId>
+		<version>1.1.1</version>
+	</dependency>
+
+	<dependency>
+		<groupId>commons-collections</groupId>
+		<artifactId>commons-collections</artifactId>
+		<version>3.2.1</version>
+	</dependency>
+
+	<dependency>
+		<groupId>cglib</groupId>
+		<artifactId>cglib</artifactId>
+		<version>2.2</version>
+	</dependency>
+	<!-- Hibernate core library dependency end -->
+
+	<!-- Hibernate query library dependency start -->
+	<dependency>
+		<groupId>antlr</groupId>
+		<artifactId>antlr</artifactId>
+		<version>2.7.7</version>
+	</dependency>
+	<!-- Hibernate query library dependency end -->
+
+
+
+ </dependencies>
+  
+  
+  
+  
+  
+  
+</project>
