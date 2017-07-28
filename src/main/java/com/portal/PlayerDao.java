@@ -17,7 +17,9 @@ public class PlayerDao {
 		try {
 			tx = session.beginTransaction();
 			 session.save(officer);
-			loginid=officer.getLoginid();
+		
+			 
+			 loginid=officer.getLoginid();
 			System.out.println(loginid);
 			tx.commit();
 		} catch (HibernateException e) {
