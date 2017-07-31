@@ -11,7 +11,17 @@
   </action>
  </package>
 -->
-<package name="myhibernate" extends="struts-default">
+<package name="myhibernate" namespace="/" extends="struts-default">
+      
+       
+	<global-results>
+	    <result name="error">/error.jsp</result>
+	</global-results>
+ 
+	<global-exception-mappings>
+	    <exception-mapping exception="java.lang.NullPointerException" result="error"></exception-mapping>
+	    <exception-mapping exception="org.hibernate.HibernateException" result="error"></exception-mapping>
+	</global-exception-mappings>
       
       <action name="login">  
 		<result>login.jsp</result>  
@@ -21,7 +31,7 @@
 		<result>Pregister.jsp</result>  
 	  </action>  
        <action name="registermany" class="com.portal.AddActionRegister" method="execute">
-     	<result name="success" type="redirect">Pregister.jsp</result>
+     	<result name="success" >Pregister.jsp</result>
      </action> 
      <action name="logoutPlayer" class="com.portal.LoginAction" method="logout">  
 		<result name="success" type="redirect">Pregister.jsp</result>  
@@ -62,7 +72,7 @@
       </action>
       
       <action name="addOfficer" method="execute" class="com.portal.AddActionOfficer">
-         <result name="success" type="redirect">Oregister.jsp</result>
+         <result name="success">Oregister.jsp</result>
        
       </action>
       

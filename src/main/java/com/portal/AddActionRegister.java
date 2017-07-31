@@ -16,8 +16,13 @@ public class AddActionRegister extends ActionSupport implements ModelDriven<Play
 	List<PlayerInfo> playerinfos1 = new ArrayList<>();
 
 	public String execute() {
-		dao.addRegister(playerAuth);
+		int i=dao.addRegister(playerAuth);
+		if(i>0)
+			addActionMessage("USER IS SUCESSFULLY REGISTERED");
+		else
+			addActionMessage("This email is already registered. use another email to get registered");
 		return "success";
+		
 	}
 
 	public String listPlayerInfo() {

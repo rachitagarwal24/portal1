@@ -24,7 +24,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<PlayerAuth
 	public String execute() {
 		ValueStack stack = ActionContext.getContext().getValueStack();
 
-		login = dao.find(playerAuth.getEmail(), playerAuth.getPassword());
+		login = dao.find(playerAuth.getEmail().toLowerCase(), playerAuth.getPassword());
 		if (login != 0) {
 			sessionmap.put("login", "true");
 			sessionmap.put("loginId", String.valueOf(login));

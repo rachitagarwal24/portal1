@@ -18,8 +18,14 @@ public class AddActionOfficer extends ActionSupport implements ModelDriven<Offic
 	PlayerDao dao = new PlayerDao();
 
 	public String execute() {
-		dao.addOfficer(officer);
+		int i=dao.addOfficer(officer);
+		
+		if(i>0)
+			addActionMessage("USER IS SUCESSFULLY REGISTERED");
+		else
+			addActionMessage("This email is already registered. use another email to get registered");
 		return "success";
+				
 	}
 
 	public String officerLogin() {

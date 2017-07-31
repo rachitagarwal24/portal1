@@ -47,15 +47,15 @@ if(ActionContext.getContext().getSession().get("loginofficer")!=null)
           </li>
           <li><a href = "#register" data-toggle = "tab">Register</a></li>
         </ul> 
-
-        <div id = "myTabContent" class = "tab-content">
+       
+		<div id = "myTabContent" class = "tab-content">
             <div class = "tab-pane fade in active" id = "login">
 
               <div class="modal-body" style="padding:40px 250px;">
               
                 
                 <s:form role="form" action="officerlogin" validate="true">
-                 <div style="color: #000">Error Message<s:actionmessage/><br/></div>
+                 <div style="color: #000"><s:if test="hasActionMessages()"><s:actionmessage/></s:if></div>
 					
                   <div class="form-group">
                     <label for="usrname">Enter Email</label>
@@ -73,7 +73,7 @@ if(ActionContext.getContext().getSession().get("loginofficer")!=null)
             <div class = "tab-pane fade" id = "register">
 
               <div class="modal-body" style="padding:40px 250px;">
-                <form role="form"  action="addOfficer" validate="true">
+                <form role="form"  action="addOfficer" method="post" validate="true">
                   <div class="form-group">
                     <label for="fname">First Name</label>
                     <input type="text" class="form-control" required="required" name="fname" placeholder="First name">

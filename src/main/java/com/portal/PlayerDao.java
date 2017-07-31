@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 public class PlayerDao {
@@ -13,15 +15,24 @@ public class PlayerDao {
 	public Integer addOfficer(Officer officer) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
-		Integer loginid = null;
+		Integer loginid = 0;
 		try {
-			tx = session.beginTransaction();
-			 session.save(officer);
-		
-			 
-			 loginid=officer.getLoginid();
-			System.out.println(loginid);
-			tx.commit();
+			
+			String email=officer.getEmail().toLowerCase();
+			officer.setEmail(email);
+			@SuppressWarnings("unchecked")
+			List<Officer> list = session.createCriteria(Officer.class).add(Restrictions.eq("email", officer.getEmail())).list();
+			if(list.size()==0)
+			{
+				tx = session.beginTransaction();
+				loginid=(Integer)session.save(officer);			
+				tx.commit();
+			}
+			else
+			{
+				System.out.println("Email Already Exists");
+			}
+			
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -38,8 +49,20 @@ public class PlayerDao {
 		Integer loginid = 0;
 		
 		try {
-			tx = session.beginTransaction();
-			session.save(playerAuth);
+			String email=playerAuth.getEmail().toLowerCase();
+			playerAuth.setEmail(email);
+			@SuppressWarnings("unchecked")
+			List<Officer> list = session.createCriteria(PlayerAuth.class).add(Restrictions.eq("email", playerAuth.getEmail())).list();
+			if(list.size()==0)
+			{
+				tx = session.beginTransaction();
+				loginid=(Integer)session.save(playerAuth);			
+				tx.commit();
+			}
+			else
+			{
+				System.out.println("Email Already Exists");
+			}
 			
 			tx.commit();
 		} catch (HibernateException e) {
@@ -72,10 +95,12 @@ public class PlayerDao {
 	public int find(String email, String password) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		System.out.println("Name is " + email + "Password is" + password);
-
 		try {
+			@SuppressWarnings("unchecked")
 			List<PlayerAuth> list = session.createCriteria(PlayerAuth.class).add(Restrictions.eq("email", email))
 					.add(Restrictions.eq("password", password)).list();
+			
+			
 
 			if (list.size() > 0) {
 				session.close();
@@ -95,6 +120,7 @@ public class PlayerDao {
 		System.out.println("Name is " + email + "Password is" + password);
 
 		try {
+			@SuppressWarnings("unchecked")
 			List<Officer> list = session.createCriteria(Officer.class).add(Restrictions.eq("email", email))
 					.add(Restrictions.eq("password", password)).list();
 
@@ -110,6 +136,7 @@ public class PlayerDao {
 		return 0;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<PlayerInfo> getParticularPlayerInfo(int playerId) {
 		List<PlayerInfo> playerinfo = new ArrayList<>();
 
@@ -127,6 +154,7 @@ public class PlayerDao {
 		return playerinfo;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<PlayerInfo> getPlayerInfos() {
 		List<PlayerInfo> playerinfos = new ArrayList<>();
 

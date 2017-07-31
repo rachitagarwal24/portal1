@@ -52,7 +52,7 @@ if(ActionContext.getContext().getSession().get("loginId")!=null)
             <div class = "tab-pane fade in active" id = "login">
 
               <div class="modal-body" style="padding:40px 250px;">
-            <div style="color: #000"><s:property value="errorMsg"/><br/></div>
+               <div style="color: #000"><s:if test="hasActionMessages()"><s:actionmessage/></s:if></div>
                 <form role="form" action="loginprocess">
                   <div class="form-group">
                     <label for="usrname">Enter Email</label>

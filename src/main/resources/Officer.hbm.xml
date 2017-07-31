@@ -6,7 +6,7 @@
     <class name="com.portal.Officer" table="officer">
         <id name="loginid" type="int">
             <column name="loginid" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="fname" type="java.lang.String">
             <column name="fname" />
