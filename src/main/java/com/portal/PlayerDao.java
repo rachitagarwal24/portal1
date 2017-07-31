@@ -28,8 +28,7 @@ public class PlayerDao {
 				loginid=(Integer)session.save(officer);			
 				tx.commit();
 			}
-			else
-			{
+			else{
 				System.out.println("Email Already Exists");
 			}
 			
@@ -56,15 +55,13 @@ public class PlayerDao {
 			if(list.size()==0)
 			{
 				tx = session.beginTransaction();
-				loginid=(Integer)session.save(playerAuth);			
+				loginid=(Integer)session.save(playerAuth);	
 				tx.commit();
 			}
-			else
-			{
+			else{
 				System.out.println("Email Already Exists");
 			}
 			
-			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -94,13 +91,10 @@ public class PlayerDao {
 
 	public int find(String email, String password) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		System.out.println("Name is " + email + "Password is" + password);
 		try {
 			@SuppressWarnings("unchecked")
 			List<PlayerAuth> list = session.createCriteria(PlayerAuth.class).add(Restrictions.eq("email", email))
 					.add(Restrictions.eq("password", password)).list();
-			
-			
 
 			if (list.size() > 0) {
 				session.close();
@@ -117,8 +111,6 @@ public class PlayerDao {
 
 	public int findOfficer(String email, String password) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		System.out.println("Name is " + email + "Password is" + password);
-
 		try {
 			@SuppressWarnings("unchecked")
 			List<Officer> list = session.createCriteria(Officer.class).add(Restrictions.eq("email", email))

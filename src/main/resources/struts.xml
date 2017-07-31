@@ -11,7 +11,7 @@
   </action>
  </package>
 -->
-<package name="myhibernate" namespace="/" extends="struts-default">
+<package name="myhibernate"  extends="struts-default">
       
        
 	<global-results>
@@ -33,11 +33,8 @@
        <action name="registermany" class="com.portal.AddActionRegister" method="execute">
      	<result name="success" >Pregister.jsp</result>
      </action> 
-     <action name="logoutPlayer" class="com.portal.LoginAction" method="logout">  
-		<result name="success" type="redirect">Pregister.jsp</result>  
-	 </action>  
      
-   
+     
       
       <action name="loginprocess" method="execute" class="com.portal.LoginAction">
       	 <result name="success" type="redirect">particularPlayer</result>
@@ -56,6 +53,12 @@
       </action>
        <action name="officerlogout" class="com.portal.AddActionOfficer" method="logout">  
 		<result name="success" type="redirect">Oregister.jsp</result>  
+	 </action>  
+	 <action name="logout" class="com.portal.LoginAction" method="logout">  
+		<result name="input">/Pregister.jsp</result>  
+		
+		
+		
 	 </action>  
     
       <action name="updateInfo">

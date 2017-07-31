@@ -14,7 +14,7 @@
       font-size: 30px;
   }
   .modal-footer {
-      background-color: #000;logoutplayer
+      background-color: #000;
   }
   </style>
 
@@ -70,13 +70,12 @@
 	   </table>
 	   </s:if>
 	   	   <s:else>
-	   	   <%System.out.println("AAAAAAAAAAAAAAAAAAAAA"); %>
 	   	   <h3>Please Login First :- <a href="Pregister.jsp">Click Here</a> </h3>
 	   	   
 	   	   </s:else>
 	   <div class="modal-footer">
-        <a href="logoutPlayer">
-        <button type="submit" class="btn  btn-default " data-dismiss="modal">player Logout</button>
+       <a href="logout">
+        <button type="submit" class="btn  btn-default " data-dismiss="modal">Player_Logout</button>
         </a>
       </div>
 	   

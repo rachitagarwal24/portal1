@@ -72,7 +72,7 @@
 	   </table>
 	   	   </s:if>
 	   	   <s:else>
-	   	   <%System.out.println("AAAAAAAAAAAAAAAAAAAAA"); %>
+	   	   
 	   	   <h3>Please Login First :- <a href="Oregister.jsp">Click Here</a> </h3>
 	   	   
 	   	   </s:else>

@@ -22,39 +22,24 @@ public class LoginAction extends ActionSupport implements ModelDriven<PlayerAuth
 
 	@Override
 	public String execute() {
-		ValueStack stack = ActionContext.getContext().getValueStack();
-
-		login = dao.find(playerAuth.getEmail().toLowerCase(), playerAuth.getPassword());
+		login = dao.find(playerAuth.getEmail(), playerAuth.getPassword());
 		if (login != 0) {
 			sessionmap.put("login", "true");
 			sessionmap.put("loginId", String.valueOf(login));
 
 			return SUCCESS;
 		} else {
-			Map<String, Object> context = new HashMap<String, Object>();
-			context.put("errorMsg", new String("Invalid user name or password. Try again."));
-			stack.push(context);
 			return INPUT;
 		}
-
 	}
 	
 	public String logout() {
+		System.out.println("logout method executed");
 		sessionmap.invalidate();
-		return "success";
+		return "input";
 	}
-
 	
-	@Override
-	public void validate() {
-		if (playerAuth.getEmail() == null || playerAuth.getEmail().trim().equals("")) {
-			addFieldError("usrname", "Please enter a email to login with.");
-			addActionMessage("You are valid user!");
-		}
-		if (playerAuth.getPassword() == null || playerAuth.getPassword().trim().equals("")) {
-			addFieldError("password", "Please enter a password.");
-		}
-	}
+	
 
 	public PlayerAuth getPlayerAuth() {
 		return playerAuth;
@@ -72,4 +57,16 @@ public class LoginAction extends ActionSupport implements ModelDriven<PlayerAuth
 	public PlayerAuth getModel() {
 		return playerAuth;
 	}
+	/*
+	@Override
+	public void validate() {
+		if (playerAuth.getEmail() == null || playerAuth.getEmail().trim().equals("")) {
+			addFieldError("usrname", "Please enter a email to login with.");
+			
+		}
+		if (playerAuth.getPassword() == null || playerAuth.getPassword().trim().equals("")) {
+			addFieldError("password", "Please enter a password.");
+		}
+	}
+	*/
 }
